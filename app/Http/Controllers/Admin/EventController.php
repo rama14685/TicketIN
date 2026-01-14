@@ -9,10 +9,27 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::latest()->get();
-        return view('admin.events.index', compact('events'));
+        $query = Event::with('kategori');
+
+        // Filter berdasarkan kategori jika ada
+        if ($request->has('kategori') && $request->kategori) {
+            $query->where('kategori_id', $request->kategori);
+        }
+
+        // Optional: filter berdasarkan search
+        if ($request->has('search') && $request->search) {
+            $query->where(function ($q) use ($request) {
+                $q->where('judul', 'like', '%' . $request->search . '%')
+                  ->orWhere('deskripsi', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $events = $query->latest()->get();
+        $kategoris = \App\Models\Kategori::all();
+
+        return view('admin.events.index', compact('events', 'kategoris'));
     }
 
     public function create()

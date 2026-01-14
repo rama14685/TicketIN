@@ -12,6 +12,35 @@
             </a>
         </div>
 
+        {{-- FILTERS --}}
+        <div class="mb-6 flex items-center justify-between">
+            <form method="GET" action="{{ route('admin.events.index') }}" class="flex gap-2 items-center w-full">
+                <div class="flex-1">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari judul atau deskripsi..."
+                           class="w-full minimal-input rounded-lg px-4 py-2" />
+                </div>
+
+                <div>
+                    <select name="kategori" onchange="this.form.submit()" class="minimal-input rounded-lg px-4 py-2">
+                        <option value="">Semua Kategori</option>
+                        @foreach($kategoris as $kategori)
+                            <option value="{{ $kategori->id }}" {{ request('kategori') == $kategori->id ? 'selected' : '' }}>
+                                {{ $kategori->nama }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div>
+                    @if(request('kategori') || request('search'))
+                        <a href="{{ route('admin.events.index') }}" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md">Reset</a>
+                    @else
+                        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md">Cari</button>
+                    @endif
+                </div>
+            </form>
+        </div>
+
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
