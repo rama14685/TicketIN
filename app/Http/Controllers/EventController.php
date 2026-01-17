@@ -46,12 +46,16 @@ class EventController extends Controller
 
     public function history()
     {
+<<<<<<< HEAD
         // Ambil transaksi langsung dari BeliTiketController::store
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
         $transaksis = Transaksi::with(['tiket.event'])
             ->where('user_id', Auth::id())
             ->latest()
             ->paginate(10);
 
+<<<<<<< HEAD
         // Ambil order dari checkout cart
         $orders = \App\Models\Order::with(['details.tiket.event'])
             ->where('user_id', Auth::id())
@@ -59,5 +63,8 @@ class EventController extends Controller
             ->paginate(10);
 
         return view('history', compact('transaksis', 'orders'));
+=======
+        return view('history', compact('transaksis'));
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
     }
 }

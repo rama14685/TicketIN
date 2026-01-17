@@ -129,6 +129,7 @@
                         @if($event->tikets->count() > 0)
                             <div class="space-y-4">
                                 @foreach ($event->tikets as $tiket)
+<<<<<<< HEAD
                                     @php
                                         // Hitung tiket terjual dari Transaksi dan DetailOrder
                                         $transaksiTerjual = $tiket->transaksis()->sum('jumlah');
@@ -136,6 +137,8 @@
                                         $totalTerjual = $transaksiTerjual + $detailOrderTerjual;
                                         $sisaTerjual = $tiket->stok + $totalTerjual; // stok awal
                                     @endphp
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                                     <div class="minimal-card rounded-lg p-4 hover:bg-white/5 transition-colors duration-300">
                                         <div class="flex justify-between items-start mb-3">
                                             <div>
@@ -147,13 +150,20 @@
                                                 </p>
                                             </div>
                                             <div class="text-right">
+<<<<<<< HEAD
                                                 <div class="text-sm text-gray-400">Stok Tersisa</div>
                                                 <div class="font-medium {{ $tiket->available_stok > 0 ? 'text-green-400' : 'text-red-400' }}">
                                                     {{ $tiket->available_stok }}/{{ $sisaTerjual }}
+=======
+                                                <div class="text-sm text-gray-400">Stok</div>
+                                                <div class="font-medium {{ $tiket->available_stok > 0 ? 'text-green-400' : 'text-red-400' }}">
+                                                    {{ $tiket->available_stok }}
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                                                 </div>
                                             </div>
                                         </div>
 
+<<<<<<< HEAD
                                         <!-- Progress Bar -->
                                         @if($sisaTerjual > 0)
                                             <div class="mb-3">
@@ -168,6 +178,8 @@
                                             </div>
                                         @endif
 
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                                         @if($tiket->available_stok > 0)
                                             <form method="POST" action="{{ route('cart.add', $tiket->id) }}" class="space-y-3">
                                                 @csrf

@@ -86,6 +86,7 @@
                             </button>
                         </form>
 
+<<<<<<< HEAD
                         <!-- Dummy Checkout Button -->
                         <form method="POST" action="{{ route('checkout.store') }}" class="flex-1">
                             @csrf
@@ -93,6 +94,11 @@
                                 Lanjutkan ke Pembayaran
                             </button>
                         </form>
+=======
+                        <button class="flex-1 accent-button rounded-lg py-3 font-medium transition-all duration-300 hover:scale-105">
+                            Lanjutkan ke Pembayaran
+                        </button>
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                     </div>
                 </div>
             </div>

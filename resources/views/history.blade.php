@@ -8,6 +8,7 @@
             <p class="text-gray-400">Lihat semua tiket yang telah Anda beli</p>
         </div>
 
+<<<<<<< HEAD
         @if($transaksis->count() > 0 || $orders->count() > 0)
             <div class="space-y-6">
                 <!-- Orders dari Checkout Cart -->
@@ -60,6 +61,10 @@
                 @endforeach
 
                 <!-- Transaksi dari Beli Langsung -->
+=======
+        @if($transaksis->count() > 0)
+            <div class="space-y-6">
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                 @foreach($transaksis as $transaksi)
                     <div class="minimal-card rounded-xl p-6">
                         <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
@@ -115,11 +120,15 @@
 
                 {{-- Pagination --}}
                 <div class="mt-8">
+<<<<<<< HEAD
                     @if($orders->count() > 0)
                         {{ $orders->links() }}
                     @elseif($transaksis->count() > 0)
                         {{ $transaksis->links() }}
                     @endif
+=======
+                    {{ $transaksis->links() }}
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                 </div>
             </div>
         @else

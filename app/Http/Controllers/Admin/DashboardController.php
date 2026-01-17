@@ -18,6 +18,7 @@ class DashboardController extends Controller
         $totalKategori = Kategori::count();
         $totalTiket = Tiket::count();
         $totalTransaksi = Transaksi::count();
+<<<<<<< HEAD
         $totalOrders = \App\Models\Order::count(); // Total orders dari checkout
 
         // Revenue calculation dari Transaksi
@@ -28,6 +29,11 @@ class DashboardController extends Controller
         
         // Total Revenue gabungan
         $totalRevenue = ($transaksiRevenue ?? 0) + ($ordersRevenue ?? 0);
+=======
+
+        // Revenue calculation
+        $totalRevenue = Transaksi::sum(DB::raw('jumlah * (SELECT harga FROM tikets WHERE tikets.id = transaksis.tiket_id)'));
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
         // Recent transactions
         $recentTransactions = Transaksi::with(['user', 'tiket.event'])
@@ -35,6 +41,7 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
+<<<<<<< HEAD
         // Recent orders dari checkout
         $recentOrders = \App\Models\Order::with(['user', 'details.tiket.event'])
             ->latest('order_date')
@@ -47,6 +54,13 @@ class DashboardController extends Controller
             ->leftJoin('tikets', 'events.id', '=', 'tikets.event_id')
             ->leftJoin('transaksis', 'tikets.id', '=', 'transaksis.tiket_id')
             ->leftJoin('detail_orders', 'tikets.id', '=', 'detail_orders.tiket_id')
+=======
+        // Events with most tickets sold
+        $popularEvents = Event::select('events.id', 'events.judul', 'events.gambar')
+            ->selectRaw('COALESCE(SUM(transaksis.jumlah), 0) as tickets_sold')
+            ->leftJoin('tikets', 'events.id', '=', 'tikets.event_id')
+            ->leftJoin('transaksis', 'tikets.id', '=', 'transaksis.tiket_id')
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
             ->groupBy('events.id', 'events.judul', 'events.gambar')
             ->orderBy('tickets_sold', 'desc')
             ->take(5)
@@ -57,10 +71,15 @@ class DashboardController extends Controller
             'totalKategori',
             'totalTiket',
             'totalTransaksi',
+<<<<<<< HEAD
             'totalOrders',
             'totalRevenue',
             'recentTransactions',
             'recentOrders',
+=======
+            'totalRevenue',
+            'recentTransactions',
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
             'popularEvents'
         ));
     }

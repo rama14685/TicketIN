@@ -15,6 +15,7 @@ class Tiket extends Model
 
     public function event()
     {
+<<<<<<< HEAD
         return $this->belongsTo(Event::class); // Relasi Eloquent: Tiket belongs to Event (ticket-event)
     }
 
@@ -27,4 +28,13 @@ class Tiket extends Model
     {
         return $this->hasMany(DetailOrder::class); // Relasi ke DetailOrder dari checkout cart
     }
+=======
+        return $this->belongsTo(Event::class);
+    }
+    public function transaksis()
+{
+    return $this->hasMany(Transaksi::class);
+}
+
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 }

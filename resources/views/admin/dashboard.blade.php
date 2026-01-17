@@ -88,6 +88,7 @@
 
         <!-- Main Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<<<<<<< HEAD
             <!-- Recent Transactions & Orders -->
             <div class="lg:col-span-2">
                 <div class="space-y-6">
@@ -172,6 +173,48 @@
                             </div>
                         @endif
                     </div>
+=======
+            <!-- Recent Transactions -->
+            <div class="lg:col-span-2">
+                <div class="minimal-card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold dark-gradient-text">Transaksi Terbaru</h2>
+                        <a href="{{ route('admin.transaksi.index') }}" class="accent-button text-sm">
+                            Lihat Semua
+                        </a>
+                    </div>
+
+                    @if($recentTransactions->count() > 0)
+                        <div class="space-y-4">
+                            @foreach($recentTransactions as $transaction)
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-white">{{ $transaction->user->name }}</p>
+                                        <p class="text-sm text-slate-400">{{ $transaction->tiket->event->nama_event }}</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-medium text-white">{{ $transaction->jumlah }} tiket</p>
+                                    <p class="text-sm text-slate-400">{{ $transaction->created_at->diffForHumans() }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="text-center py-8">
+                            <svg class="w-12 h-12 text-slate-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <p class="text-slate-400">Belum ada transaksi</p>
+                        </div>
+                    @endif
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                 </div>
             </div>
 

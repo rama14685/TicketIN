@@ -54,13 +54,17 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stok</th>
+<<<<<<< HEAD
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Terjual</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tersisa</th>
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse ($event->tikets as $tiket)
+<<<<<<< HEAD
                         @php
                             // Hitung tiket terjual dari Transaksi dan DetailOrder
                             $transaksiTerjual = $tiket->transaksis()->sum('jumlah');
@@ -68,6 +72,8 @@
                             $totalTerjual = $transaksiTerjual + $detailOrderTerjual;
                             $sisaTerjual = $tiket->stok + $totalTerjual; // stok awal = stok sekarang + terjual
                         @endphp
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
                                 {{ $tiket->tipe }}
@@ -76,6 +82,7 @@
                                 Rp {{ number_format($tiket->harga, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+<<<<<<< HEAD
                                 {{ $sisaTerjual }} (awal)
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -87,6 +94,9 @@
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium {{ $tiket->stok > 0 ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $tiket->stok }}
                                 </span>
+=======
+                                {{ $tiket->stok }}
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <a href="{{ route('admin.tiket.edit', $tiket->id) }}" class="text-yellow-600 hover:text-yellow-900 mr-3">Edit</a>
@@ -99,7 +109,11 @@
                         </tr>
                     @empty
                         <tr>
+<<<<<<< HEAD
                             <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+=======
+                            <td colspan="4" class="px-6 py-4 text-center text-gray-500">
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
                                 Tiket belum tersedia untuk event ini.
                             </td>
                         </tr>

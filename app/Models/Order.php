@@ -19,6 +19,7 @@ class Order extends Model
 
     public function user()
     {
+<<<<<<< HEAD
         return $this->belongsTo(User::class); // Relasi ke User yang membuat order
     }
 
@@ -31,5 +32,19 @@ class Order extends Model
     {
         return $this->belongsTo(Event::class);
     }
+=======
+        return $this->belongsTo(User::class);
+    }
+
+    public function details()
+{
+    return $this->hasMany(DetailOrder::class);
+}
+
+public function event()
+{
+    return $this->belongsTo(Event::class);
+}
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
 }

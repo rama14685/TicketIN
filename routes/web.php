@@ -34,7 +34,10 @@ Route::get('/events/{event}', [EventController::class, 'show'])
 */
 use App\Http\Controllers\BeliTiketController;
 use App\Http\Controllers\CartController;
+<<<<<<< HEAD
 use App\Http\Controllers\CheckoutController;
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
 Route::middleware('auth')->group(function () {
 
@@ -53,7 +56,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('tiket/{tiket}/beli',
         [BeliTiketController::class, 'store']
+<<<<<<< HEAD
     )->name('tiket.beli'); // Route untuk menangani request pembelian tiket - bagian dari alur MVC
+=======
+    )->name('tiket.beli');
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
     // Cart routes
     Route::post('cart/add/{tiket}', [CartController::class, 'add'])->name('cart.add');
@@ -61,9 +68,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('cart/remove/{index}', [CartController::class, 'remove'])->name('cart.remove');
     Route::delete('cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
+<<<<<<< HEAD
     // Checkout route - Dummy checkout untuk mengubah cart menjadi order
     Route::post('checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
 
     /**
@@ -98,7 +108,10 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\TiketController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransaksiController;
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\OrderController;
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
 Route::middleware(['auth', 'role:admin'])
     ->prefix('admin')
@@ -117,11 +130,14 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('kategori', KategoriController::class);
         Route::resource('events', AdminEventController::class);
         Route::resource('transaksi', TransaksiController::class)->only(['index', 'show']);
+<<<<<<< HEAD
         
         /**
          * Orders dari checkout cart
          */
         Route::resource('orders', OrderController::class)->only(['index', 'show']);
+=======
+>>>>>>> 3595ef552b03d60e44f8a3ee4acdc271d27a8810
 
         /**
          * Tiket per Event (ADMIN)
